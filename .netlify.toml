@@ -1,0 +1,23 @@
+# Netlify-Konfiguration für das Next.js-Projekt
+[build]
+  command = "CI=false npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+  NEXT_TELEMETRY_DISABLED = "1"
+  NODE_ENV = "production"
+
+# Deaktiviere ESLint während des Netlify-Builds
+[build.environment.NEXT_LINT]
+  DISABLED = "true"
+
+[functions]
+  included_files = ["node_modules/.prisma/**"]
+
+# Umgebungsvariablen-Redirect
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
