@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import Image from 'next/image';
 import { format } from 'date-fns';
@@ -49,26 +49,8 @@ export default function MessagesPage({ initialConversationId }: MessagesPageProp
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Schütze die Route - nur für eingeloggte Benutzer
-  useEffect(() => {
-    if (!loading && !user) {
-      router.push('/login');
-    } else if (user) {
-      fetchConversations();
-    }
-  }, [user, loading, router]);
-  
-  // Wenn eine initialConversationId übergeben wurde, lade diese Konversation und setze sie als ausgewählt
-  useEffect(() => {
-    if (initialConversationId && user) {
-      console.log('Initialisiere Konversation mit ID:', initialConversationId);
-      setSelectedConversation(initialConversationId);
-      fetchMessages(initialConversationId);
-    }
-  }, [initialConversationId, user]);
-
-  // Lade Konversationen des Benutzers
-  const fetchConversations = async () => {
+  // Beide Funktionen mit useCallback umhüllen, um zirkuläre Abhängigkeiten zu vermeiden
+  const fetchConversations = useCallback(async () => {
     try {
       setIsLoading(true);
       const response = await fetch('/api/conversations');
@@ -91,10 +73,10 @@ export default function MessagesPage({ initialConversationId }: MessagesPageProp
       }
       setIsLoading(false);
     }
-  };
-
+  }, []);
+  
   // Lade Nachrichten für die ausgewählte Konversation
-  const fetchMessages = async (conversationId: string) => {
+  const fetchMessages = useCallback(async (conversationId: string) => {
     try {
       setIsLoading(true);
       const response = await fetch(`/api/messages/${conversationId}`);
@@ -128,7 +110,29 @@ export default function MessagesPage({ initialConversationId }: MessagesPageProp
       }
       setIsLoading(false);
     }
-  };
+  }, [fetchConversations]);  // fetchConversations als Abhängigkeit hinzugefügt
+
+  // Schütze die Route - nur für eingeloggte Benutzer
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/login');
+    } else if (user) {
+      fetchConversations();
+    }
+  }, [user, loading, router, fetchConversations]);
+  
+  // Wenn eine initialConversationId übergeben wurde, lade diese Konversation und setze sie als ausgewählt
+  useEffect(() => {
+    if (initialConversationId && user) {
+      console.log('Initialisiere Konversation mit ID:', initialConversationId);
+      setSelectedConversation(initialConversationId);
+      fetchMessages(initialConversationId);
+    }
+  }, [initialConversationId, user, fetchMessages]);
+
+
+
+
 
   // Sende eine neue Nachricht
   const sendMessage = async (e: React.FormEvent) => {
