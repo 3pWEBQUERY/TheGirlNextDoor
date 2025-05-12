@@ -338,7 +338,7 @@ const MediaForm: React.FC<MediaFormProps> = ({
                   {/* Echtes Bild (in der Mock-Version zeigen wir Platzhalter) */}
                   <img 
                     src={url} 
-                    alt={`Bild ${index + 1}`} 
+                    alt={"Bild " + (index + 1)} 
                     className="w-full h-full object-cover" 
                   />
                   {/* Overlay mit Löschen-Button */}

@@ -101,19 +101,19 @@ const AvailabilityForm: React.FC<AvailabilityFormProps> = ({ profileData, handle
             <ul className="text-xs text-gray-600 space-y-1">
               <li className="flex items-start">
                 <Check size={14} className="text-green-500 mr-1 shrink-0 mt-0.5" />
-                <span>Genaue Zeitfenster (z.B. "Nach Vereinbarung nur zwischen 18-22 Uhr")</span>
+                <span>Genaue Zeitfenster (z.B. &quot;Nach Vereinbarung nur zwischen 18-22 Uhr&quot;)</span>
               </li>
               <li className="flex items-start">
                 <Check size={14} className="text-green-500 mr-1 shrink-0 mt-0.5" />
-                <span>Besondere Verfügbarkeiten (z.B. "Buchungen min. 2 Tage im Voraus")</span>
+                <span>Besondere Verfügbarkeiten (z.B. &quot;Buchungen min. 2 Tage im Voraus&quot;)</span>
               </li>
               <li className="flex items-start">
                 <Check size={14} className="text-green-500 mr-1 shrink-0 mt-0.5" />
-                <span>Stadtteile oder Regionen, in denen Sie arbeiten (z.B. "Nur in Zürich und Umgebung")</span>
+                <span>Stadtteile oder Regionen, in denen Sie arbeiten (z.B. &quot;Nur in Zürich und Umgebung&quot;)</span>
               </li>
               <li className="flex items-start">
                 <Check size={14} className="text-green-500 mr-1 shrink-0 mt-0.5" />
-                <span>Saisonale Verfügbarkeit (z.B. "Im Sommer auch kurzfristig verfügbar")</span>
+                <span>Saisonale Verfügbarkeit (z.B. &quot;Im Sommer auch kurzfristig verfügbar&quot;)</span>
               </li>
             </ul>
 
@@ -125,7 +125,7 @@ const AvailabilityForm: React.FC<AvailabilityFormProps> = ({ profileData, handle
               </li>
               <li className="flex items-start">
                 <X size={14} className="text-red-500 mr-1 shrink-0 mt-0.5" />
-                <span>Preisangaben oder Verhandlungen (nutzen Sie dafür den Bereich "Preise")</span>
+                <span>Preisangaben oder Verhandlungen (nutzen Sie dafür den Bereich &quot;Preise&quot;)</span>
               </li>
               <li className="flex items-start">
                 <X size={14} className="text-red-500 mr-1 shrink-0 mt-0.5" />

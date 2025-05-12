@@ -62,7 +62,7 @@ export default function Home() {
       {/* How It Works Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-4">So funktioniert's</h2>
+          <h2 className="text-3xl font-bold text-center mb-4">So funktioniert&apos;s</h2>
           <p className="text-center text-gray-600 mb-6 max-w-2xl mx-auto">
             TheGND kombiniert die Vorteile einer strukturierten Escort Directory mit der Dynamik von kurzen Videos für ein besseres Nutzererlebnis.
           </p>

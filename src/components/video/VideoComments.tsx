@@ -50,7 +50,7 @@ const VideoComments = ({ videoId }: VideoCommentsProps) => {
     if (videoId) {
       fetchComments();
     }
-  }, [videoId]);
+  }, [videoId, fetchComments]);
 
   // Kommentar absenden
   const handleSubmitComment = async (e: React.FormEvent) => {
@@ -150,7 +150,7 @@ const VideoComments = ({ videoId }: VideoCommentsProps) => {
                 disabled={isLoading || !newComment.trim()}
                 className={`px-4 py-2 ${isLoading || !newComment.trim() ? 'bg-gray-300 cursor-not-allowed' : 'bg-primary-600 hover:bg-primary-700'} text-white rounded-md transition-colors`}
               >
-                {isLoading ? 'Wird gesendet...' : 'Kommentieren'}
+                {isLoading ? "Wird gesendet..." : "Kommentieren"}
               </button>
             </div>
           </div>
@@ -178,7 +178,7 @@ const VideoComments = ({ videoId }: VideoCommentsProps) => {
                   {comment.user.image ? (
                     <Image 
                       src={comment.user.image} 
-                      alt={comment.user.name || 'Benutzer'} 
+                      alt={comment.user.name || "Benutzer"} 
                       width={40} 
                       height={40} 
                       className="object-cover"
@@ -191,7 +191,7 @@ const VideoComments = ({ videoId }: VideoCommentsProps) => {
                 </div>
                 <div className="flex-grow">
                   <div className="flex justify-between items-start">
-                    <h4 className="font-medium text-gray-900">{comment.user.name || 'Anonym'}</h4>
+                    <h4 className="font-medium text-gray-900">{comment.user.name || "Anonym"}</h4>
                     <span className="text-xs text-gray-500">{formatDate(comment.createdAt)}</span>
                   </div>
                   <p className="text-gray-700 mt-1">{comment.content}</p>
